@@ -3,6 +3,7 @@ import Button from "./Button"
 import TasksSeparator from "./TasksSeparator"
 import TASKLIST from "../constants/taskList"
 import TaskItem from "./TaskItem"
+import { toast } from "sonner"
 
 import {
   AddIcon,
@@ -25,12 +26,15 @@ function Tasks() {
         return task
       }
       if (task.status === "todo") {
+        toast.success("Tarefa iniciada com sucesso!")
         return { ...task, status: "in_progress" }
       }
       if (task.status === "in_progress") {
+        toast.success("Tarefa concluída com sucesso!")
         return { ...task, status: "done" }
       }
       if (task.status === "done") {
+        toast.success("Tarefa reiniciada com sucesso!")
         return { ...task, status: "todo" }
       }
       return task
@@ -41,6 +45,7 @@ function Tasks() {
   const handleTaskDeleteClick = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId)
     setTasks(newTasks)
+    toast.success("Tarefa deletada com sucesso")
   }
 
   return (
