@@ -12,9 +12,11 @@ import {
   MoonIcon,
   CloudSunIcon,
 } from "../assets/icons/index"
+import AddTaskDialog from "./AddTaskDialog"
 
 function Tasks() {
   const [tasks, setTasks] = useState(TASKLIST)
+  const [addTaskDialogIsOpen, setaddTaskDialogIsOpen] = useState(false)
 
   const morningTasks = tasks.filter((task) => task.time === "morning")
   const afternoonTasks = tasks.filter((task) => task.time === "afternoon")
@@ -62,10 +64,14 @@ function Tasks() {
             Limpar tarefas
             <TrashIcon />
           </Button>
-          <Button variant="primary">
+          <Button
+            variant="primary"
+            onClick={() => setaddTaskDialogIsOpen(true)}
+          >
             Nova tarefa
             <AddIcon />
           </Button>
+          <AddTaskDialog isOpen={addTaskDialogIsOpen} />
         </div>
       </div>
       <div className="rounded-xl bg-white p-6">
