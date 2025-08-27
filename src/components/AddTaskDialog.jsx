@@ -2,12 +2,28 @@ import { createPortal } from "react-dom"
 import Input from "./Input"
 import Button from "./Button"
 import { CSSTransition } from "react-transition-group"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import "./AddTaskDialog.css"
 import TimeSelect from "./TimeSelect"
+import { v4 } from "uuid"
 
-const AddTaskDialog = ({ isOpen, handleClose }) => {
+const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
+  const [time, setTime] = useState()
+  const [title, setTitle] = useState()
+  const [description, setDescription] = useState()
   const nodeRef = useRef()
+
+  const handleSaveClick = () => {
+    handleSubmit({
+      id: v4(),
+      title,
+      description,
+      time,
+      status: "todo",
+    })
+    handleClose()
+  }
+
   return (
     <CSSTransition
       nodeRef={nodeRef}
@@ -34,12 +50,17 @@ const AddTaskDialog = ({ isOpen, handleClose }) => {
                   id="title"
                   placeholder="Insira o título da tarefa"
                   label="Título"
+                  onChange={(event) => setTitle(event.target.value)}
                 />
-                <TimeSelect></TimeSelect>
+                <TimeSelect
+                  value={time}
+                  onChange={(event) => setTime(event.target.value)}
+                ></TimeSelect>
                 <Input
                   id="description"
                   placeholder="Descreva a tarefa"
                   label="Descrição"
+                  onChange={(event) => setDescription(event.target.value)}
                 />
                 <div className="flex justify-center gap-3">
                   <Button
@@ -50,7 +71,11 @@ const AddTaskDialog = ({ isOpen, handleClose }) => {
                   >
                     Cancelar
                   </Button>
-                  <Button size="large" className="w-full">
+                  <Button
+                    size="large"
+                    className="w-full"
+                    onClick={handleSaveClick}
+                  >
                     Salvar
                   </Button>
                 </div>
