@@ -2,26 +2,23 @@ import { createPortal } from "react-dom"
 import Input from "./Input"
 import Button from "./Button"
 import { CSSTransition } from "react-transition-group"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import "./AddTaskDialog.css"
 import TimeSelect from "./TimeSelect"
 import { v4 } from "uuid"
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
-  const [time, setTime] = useState("morning")
-  const [title, setTitle] = useState()
-  const [description, setDescription] = useState()
   const [errors, setErrors] = useState([])
   const nodeRef = useRef()
-
-  useEffect(() => {
-    setTitle("")
-    setTime("morning")
-    setDescription("")
-  }, [isOpen])
+  const titleRef = useRef()
+  const timeRef = useRef()
+  const descriptionRef = useRef()
 
   const handleSaveClick = () => {
     const newErrors = []
+    const title = titleRef.current.value.trim()
+    const time = timeRef.current.value.trim()
+    const description = descriptionRef.current.value.trim()
 
     if (!title.trim()) {
       newErrors.push({ inputName: "title", message: "O título é obrigatório" })
@@ -41,6 +38,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
     if (newErrors.length > 0) {
       return
     }
+
     handleSubmit({
       id: v4(),
       title,
@@ -83,21 +81,17 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   id="title"
                   placeholder="Insira o título da tarefa"
                   label="Título"
-                  onChange={(event) => setTitle(event.target.value)}
                   error={titleError}
+                  ref={titleRef}
                 />
 
-                <TimeSelect
-                  value={time}
-                  onChange={(event) => setTime(event.target.value)}
-                  error={timeError}
-                ></TimeSelect>
+                <TimeSelect ref={timeRef} error={timeError}></TimeSelect>
 
                 <Input
                   id="description"
                   placeholder="Descreva a tarefa"
                   label="Descrição"
-                  onChange={(event) => setDescription(event.target.value)}
+                  ref={descriptionRef}
                   error={descriptionError}
                 />
 
