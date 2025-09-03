@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import "./AddTaskDialog.css"
 import TimeSelect from "./TimeSelect"
 import { v4 } from "uuid"
+import PropTypes from "prop-types"
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [errors, setErrors] = useState([])
@@ -123,6 +124,12 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
       </div>
     </CSSTransition>
   )
+}
+
+AddTaskDialog.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
 
 export default AddTaskDialog
