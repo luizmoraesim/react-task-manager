@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "id": "aa5c6769-3bb5-43f9-a606-1059403ccd40",
+      "title": "Estudar React",
+      "description": "Estudar para os processos seletivos",
+      "time": "morning",
+      "status": "done"
+    },
+    {
+      "id": "1c58f97f-162a-4077-a06b-38320b9755a2",
+      "title": "Estudar Rust",
+      "description": "Estudar rust para desenvolver tudo com ele",
+      "time": "morning",
+      "status": "done"
+    },
+    {
+      "id": "acb1ce7e-ffb1-4599-9c19-57c33a011b2f",
+      "title": "Treinar",
+      "description": "Exercícios pra deixar de ser gordo",
+      "time": "morning",
+      "status": "in_progress"
+    },
+    {
+      "id": "e4366943-2817-4df7-866c-82716d9dfd56",
+      "title": "Fazer compras",
+      "description": "Fazer as compras do mês",
+      "time": "afternoon",
+      "status": "in_progress"
+    },
+    {
+      "id": "89b857f0-52a7-4fe9-8ca1-702976df6204",
+      "title": "Passear com Cachorro",
+      "description": "Levar o Dog pra pegar um ar fresco",
+      "time": "night",
+      "status": "todo"
+    },
+    {
+      "id": "37c0ee0d-7e25-45ef-8c07-08337cb3ef01",
+      "title": "Meditar",
+      "description": "Sessão de meditação transcendental de 20 min",
+      "time": "night",
+      "status": "todo"
+    },
+    {
+      "id": "1ca4f482-a2c5-4894-9a84-da5b420b47e6",
+      "title": "coçar minha benga",
+      "description": "massagear minha piroca pensando na muié dos ôto",
+      "time": "night",
+      "status": "todo"
+    }
+  ]
+}
