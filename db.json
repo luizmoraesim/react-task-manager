@@ -41,20 +41,6 @@
       "description": "Sessão de meditação transcendental de 20 min",
       "time": "night",
       "status": "todo"
-    },
-    {
-      "id": "1ca4f482-a2c5-4894-9a84-da5b420b47e6",
-      "title": "teste 2",
-      "description": "teste 2 de tarefa",
-      "time": "night",
-      "status": "todo"
-    },
-    {
-      "id": "21b64aef-02c0-4a6e-9ff9-09fe9f0a9a10",
-      "title": "asdgasd",
-      "description": "qwefqwef",
-      "time": "night",
-      "status": "todo"
     }
   ]
 }
